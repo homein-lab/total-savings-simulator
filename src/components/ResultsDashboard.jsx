@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ResultsDashboard = ({ results, onReset }) => {
-    const { monthlyEmissions, potentialSavings, recommendations } = results;
+    const { monthlyEmissions, potentialSavings, recommendations, productPacks } = results;
 
     // Mock annual values for the UI match
     const annualCost = Math.round(potentialSavings * 12 * 1.5); // Mock cost
@@ -14,13 +14,13 @@ const ResultsDashboard = ({ results, onReset }) => {
                 <div className="bg-brand-navy text-white p-8 text-center">
                     <h3 className="text-xs font-bold uppercase tracking-wider mb-4">SIMULACIÓN GASTO ANUAL</h3>
                     <div className="text-5xl font-light">
-                        {annualCost}€
+                        ${annualCost}
                     </div>
                 </div>
                 <div className="bg-brand-navy text-white p-8 text-center">
                     <h3 className="text-xs font-bold uppercase tracking-wider mb-4">SIMULACIÓN AHORRO ANUAL</h3>
                     <div className="text-5xl font-light">
-                        {annualSavings}€
+                        ${annualSavings}
                     </div>
                 </div>
             </div>
@@ -40,7 +40,7 @@ const ResultsDashboard = ({ results, onReset }) => {
                                 </span>
                             </div>
                             <div className="text-3xl font-bold text-brand-navy mb-1">
-                                {Math.round(rec.savings)}€
+                                ${Math.round(rec.savings)}
                             </div>
                             <p className="text-gray-600 text-sm max-w-[150px]">{rec.title}</p>
                         </div>
@@ -49,7 +49,7 @@ const ResultsDashboard = ({ results, onReset }) => {
             </div>
 
             {/* Bottom Banner */}
-            <div className="bg-brand-navy text-white p-8 flex flex-col md:flex-row items-center justify-center gap-8">
+            <div className="bg-brand-navy text-white p-8 flex flex-col md:flex-row items-center justify-center gap-8 mb-12">
                 <div className="text-center md:text-left">
                     <div className="text-xs font-bold uppercase tracking-wider mb-1">PUEDES AHORRAR</div>
                     <div className="text-5xl font-bold">
@@ -61,6 +61,8 @@ const ResultsDashboard = ({ results, onReset }) => {
                     en tu factura si sustituyes los equipos de aire acondicionado por ventiladores y aplicas estos consejos.
                 </div>
             </div>
+
+            {/* Product Packs Section Removed - Moved to Parent */}
 
             <div className="mt-8 text-center">
                 <button onClick={onReset} className="text-gray-400 text-sm underline hover:text-brand-navy">

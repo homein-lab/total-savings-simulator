@@ -8,7 +8,7 @@ const EMISSION_FACTORS = {
     "Otro": 0.50,
 };
 
-const AVG_PRICE_PER_KWH = 3.0; // ~$3.00 MXN per kWh (High consumption tier approximation)
+const AVG_PRICE_PER_KWH = 3.5; // ~$3.50 MXN per kWh (DAC Tariff approximation)
 
 export const calculateResults = (data) => {
     const { bill, location, area, heaterAc, heaterWater } = data;
@@ -69,9 +69,58 @@ export const calculateResults = (data) => {
         type: 'producto'
     });
 
+    const productPacks = [
+        {
+            id: 'tier-1',
+            title: 'Tier 1: Retorno Alto, Costo Bajo',
+            description: 'Mejoras rápidas con gran impacto inmediato.',
+            items: [
+                'Termostatos inteligentes',
+                'Iluminación LED',
+                'Burletes y sellado de ventanas',
+                'Cabezales de ducha de bajo flujo',
+                'Actualización de electrodomésticos (refri viejo, lavavajillas)'
+            ],
+            financing: 'Microcréditos / Líneas de crédito',
+            estimatedCost: '$5,000 - $15,000 MXN',
+            estimatedSavings: '$800 - $2,000 MXN / año'
+        },
+        {
+            id: 'tier-2',
+            title: 'Tier 2: Retorno Medio, Costo Medio',
+            description: 'Inversiones moderadas para mayor eficiencia.',
+            items: [
+                'Calentador de agua con bomba de calor',
+                'Calentador de agua solar',
+                'Aislamiento básico de paredes/techo',
+                'Doble/triple acristalamiento',
+                'Batería solar (sistemas pequeños)'
+            ],
+            financing: 'Préstamos a corto/mediano plazo (24–60 meses)',
+            estimatedCost: '$20,000 - $80,000 MXN',
+            estimatedSavings: '$3,000 - $8,000 MXN / año'
+        },
+        {
+            id: 'tier-3',
+            title: 'Tier 3: Mejoras Mayores, Máximo Impacto',
+            description: 'Transformación total para máxima independencia energética.',
+            items: [
+                'Bomba de calor (HVAC completo)',
+                'Sistemas fotovoltaicos solares',
+                'Aislamiento profundo',
+                'Reemplazo de ventanas',
+                'Reemplazo de techo con membrana aislante'
+            ],
+            financing: 'Préstamos verdes a largo plazo / Hipoteca verde',
+            estimatedCost: '$150,000+ MXN',
+            estimatedSavings: '$15,000+ MXN / año'
+        }
+    ];
+
     return {
         monthlyEmissions: Math.round(monthlyEmissions),
         potentialSavings: Math.round(potentialSavings),
-        recommendations
+        recommendations,
+        productPacks
     };
 };

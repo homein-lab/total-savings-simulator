@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import FileUploader from './FileUploader';
 
 const InputForm = ({ onSubmit }) => {
     const [formData, setFormData] = useState({
@@ -13,6 +14,10 @@ const InputForm = ({ onSubmit }) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
+    const handleUploadComplete = (value) => {
+        setFormData(prev => ({ ...prev, bill: value }));
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
         onSubmit(formData);
@@ -20,22 +25,11 @@ const InputForm = ({ onSubmit }) => {
 
     return (
         <div className="w-full">
-            <h3 className="text-brand-navy font-bold text-lg mb-6">OPCIÓN 1: Tengo mi factura de la luz a mano</h3>
-
             <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                    <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Importe de una factura de verano</label>
-                    <div className="relative">
-                        <input
-                            type="number"
-                            name="bill"
-                            required
-                            value={formData.bill}
-                            onChange={handleChange}
-                            className="w-full px-4 py-3 bg-brand-light border border-gray-200 rounded-none text-brand-navy focus:outline-none focus:border-brand-cyan transition-colors"
-                            placeholder="Importe ($)"
-                        />
-                    </div>
+                    <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Sube tus recibos (Luz, Agua, Gas)</label>
+                    <FileUploader onUploadComplete={handleUploadComplete} />
+                    {/* Hidden input to maintain form logic if needed, or just rely on state */}
                 </div>
 
                 <div>
