@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-navy: #072146;
+  --color-brand-blue: #004481;
+  --color-brand-light: #F4F8FB;
+  --color-brand-cyan: #2DCCCD;
+}
+
+body {
+  @apply bg-white text-slate-900 font-sans;
+}
