@@ -85,7 +85,7 @@ function App() {
       <footer className="bg-brand-navy text-white py-12 mt-12">
         <div className="container mx-auto px-4 md:px-8 text-center">
           <p className="text-sm opacity-60">
-            © 2024 Green Energy Simulator. Todos los derechos reservados.
+            © 2025 Homein. Todos los derechos reservados.
           </p>
         </div>
       </footer>
